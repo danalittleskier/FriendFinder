@@ -1,7 +1,7 @@
 var friendsList = [{
-    "name":"Aksel",
-    "photo":"./images/aksel.jpg",
-    "scores":[
+    name: "Aksel",
+    photo: "./images/aksel.jpg",
+    scores :[
         5,
         1,
         4,

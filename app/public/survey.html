@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Survey</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="fa fa-fire"></span> Friend Finder</h1>
+            <hr>
+            <h4 class="text-center">Fill out the survey to find your best match! From 1 least favorite to 5 love.</h4>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-med-8 mx-auto">
+                <form>
+                    <div class="form-group">
+                        <label for="friendName">Name (required)</label>
+                        <input type="text" class="form-control form-control-sm" id="friendName" placeholder="Joe Cool">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstAnswer">Your mind is always buzzing with unexplored ideas and plans.</label>
+                        <select class="form-control form-control-sm" id="firstAnswer">
+                            <option>1 (Strongly Disagree)</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="secondAnswer">Generally speaking you rely more on experience than your
+                            imagination.</label>
+                        <select class="form-control form-control-sm" id="secondAnswer">
+                            <option>1 (Strongly Disagree)</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="coolPhoto">Add a cool photo</label>
+                        <input type="file" class="form-control-file" id="coolPhoto">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends Link</a>
+            </div>
+        </footer>
+
+    </div>
+    <script type="text/javascript">
+        $(".submit").on("click", function (event) {
+            event.preventDefault();
+
+            // Here we grab the form elements
+            var newFriend = {
+                name: $("#friendName").val().trim(),
+                photo: $("#coolPhoto").val().trim(),
+                scores: [$("#firstAnswer").val().trim(),$("#secondAnswer").val().trim()]
+
+            };
+
+            console.log(newFriend);
+
+            $.post("/api/friends", newFriend,
+                function (data) {
+                    if (data) {
+                        alert("Yay! You have a new friend!");
+                    }
+                    else {
+                        alert("Sorry the friend did not work out");
+                    }
+
+                    // Clear the form when submitting
+                    $("#friendName").val("");
+                    $("#coolPhoto").val("");
+                    $("#firstAnswer").val("");
+                    $("#secondAnswer").val("");
+
+                });
+
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
