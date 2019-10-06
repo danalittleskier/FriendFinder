@@ -11,7 +11,7 @@ module.exports = function (app) {
         var matchArray = [];
 
         friendsList.forEach(friend => {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 10; i++) {
                     totalDifference += Math.abs(friend.scores[i] - req.body.scores[i]);    
             }
             console.log("total difference = "+totalDifference);

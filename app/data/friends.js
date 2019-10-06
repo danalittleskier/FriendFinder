@@ -3,16 +3,16 @@ var friendsList = [
     name: "Aksel",
     photo: "https://image.redbull.com/rbcom/010/2015-06-24/1331731349232_2/0012/0/66/0/4393/6499/1500/1/world-champion-alpine-skier-aksel-lund-svinda-2015.jpg",
     scores :[
-        5,
-        1,
-        4,
-        4,
-        5,
-        1,
-        2,
+        3,
         5,
         4,
-        1
+        4,
+        5,
+        3,
+        4,
+        5,
+        4,
+        3
       ]
   },
   {

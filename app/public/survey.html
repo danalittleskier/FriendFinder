@@ -154,8 +154,8 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p id="match-name"></p>
-                  <img id="match-img">
+                  <h3 id="match-name"></h3>
+                  <img id="match-img" src="">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -197,9 +197,9 @@
             $.post("/api/friends", newFriend,
                 function (data) {
                     if (data) {
-                        console.log("Im here "+data.name);
-                        $("#match-name").val(data.name);
-                        $("#match-image").attr('src', data.photo);
+                        //alert("You found someone "+ data.name);
+                        $("#match-name").text(data.name);
+                        $("#match-image").prop('src', data.photo);
                         $("#match-modal").modal('show');                     
                     }
                     else {
@@ -217,7 +217,7 @@
                     $("#sixthAnswer").val("");
                     $("#seventhAnswer").val("");
                     $("#eightAnswer").val("");
-                    $("#ninghtAnswer").val("");
+                    $("#ninthAnswer").val("");
                     $("#tenthAnswer").val("");
 
 
