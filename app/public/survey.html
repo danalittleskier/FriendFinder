@@ -8,6 +8,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -27,6 +29,10 @@
                     <div class="form-group">
                         <label for="friendName">Name (required)</label>
                         <input type="text" class="form-control form-control-sm" id="friendName" placeholder="Joe Cool">
+                    </div>
+                    <div class="form-group">
+                        <label for="coolPhoto">Add a cool photo</label>
+                        <input type="text" class="form-control-file" id="coolPhoto">
                     </div>
                     <div class="form-group">
                         <label for="firstAnswer">Your mind is always buzzing with unexplored ideas and plans.</label>
@@ -50,11 +56,27 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="coolPhoto">Add a cool photo</label>
-                        <input type="file" class="form-control-file" id="coolPhoto">
+                        <label for="thirdAnswer">You will always fight to save the world</label>
+                        <select class="form-control form-control-sm" id="thirdAnswer">
+                            <option>1 (Strongly Disagree)</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fourthAnswer">The Mountains are your refuge</label>
+                        <select class="form-control form-control-sm" id="fourthAnswer">
+                            <option>1 (Strongly Disagree)</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5 (Strongly Agree)</option>
+                        </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mb-2" id="add-friend">Submit</button>
                 </form>
             </div>
 
@@ -68,23 +90,24 @@
 
     </div>
     <script type="text/javascript">
-        $(".submit").on("click", function (event) {
+        $("#add-friend").on("click", function (event) {
             event.preventDefault();
 
             // Here we grab the form elements
             var newFriend = {
                 name: $("#friendName").val().trim(),
                 photo: $("#coolPhoto").val().trim(),
-                scores: [$("#firstAnswer").val().trim(),$("#secondAnswer").val().trim()]
+                scores: [parseInt($("#firstAnswer").val().trim()),
+                        parseInt($("#secondAnswer").val().trim()),
+                        parseInt($("#thirdAnswer").val().trim()),
+                        parseInt($("#thirdAnswer").val().trim())]
 
             };
-
-            console.log(newFriend);
 
             $.post("/api/friends", newFriend,
                 function (data) {
                     if (data) {
-                        alert("Yay! You have a new friend!");
+                        alert(`Yay! You have a new match! \n ${data.name} \n<img src="${data.photo}">`);
                     }
                     else {
                         alert("Sorry the friend did not work out");
