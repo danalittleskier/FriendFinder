@@ -2,10 +2,12 @@ var path = require("path");
 
 module.exports = function (app) {
 
+  //added a route for the baqckground image
   app.get("/images/hearts.jpg", function (req, res) {
     res.sendFile(path.join(__dirname, "../images/hearts.jpg"));
   });
 
+  //route for the style sheet
   app.get("/css/style.css", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/css/style.css"));
   });
