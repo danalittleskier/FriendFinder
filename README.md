@@ -16,6 +16,9 @@ The data is stored in an array in the friends.js file.
 
 https://github.com/danalittleskier/FriendFinder
 
+### Portfolio Link
+https://danalittleskier.github.io/Portfolio/
+
 ### Role
 
 Dana Alexandrescu - developer
